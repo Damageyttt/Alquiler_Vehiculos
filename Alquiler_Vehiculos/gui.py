@@ -321,3 +321,38 @@ class AlquilerVehiculosGUI:
             self.root.mainloop()
         except Exception as e:
             print(f"Error inesperado: {e}")
+            
+            from tkinter import Tk, Label, Frame
+
+class VehiculosGUI:
+    def __init__(self):
+        self.root = Tk()
+        self.root.title("Lista de Vehículos")
+        self.root.geometry("400x300")
+
+        self.vehiculos = [
+            {"tipo": "Auto", "matricula": "ABC123", "color": "red"},
+            {"tipo": "Auto", "matricula": "DEF456", "color": "red"},
+            {"tipo": "Auto", "matricula": "GHI789", "color": "red"},
+            {"tipo": "Moto", "matricula": "MOT001", "color": "red"},
+        ]
+
+        self.mostrar_vehiculos()
+
+    def mostrar_vehiculos(self):
+        "Crea una interfaz con la lista de vehículos en colores personalizados"
+        frame =  any Frame(self.root)
+        frame.pack(pady=10)
+
+        for vehiculo in self.vehiculos:
+            texto = f"{vehiculo['tipo']} - Matrícula: {vehiculo['matricula']}"
+            Label(frame, text=texto, fg=vehiculo["color"]).pack(pady=5)
+
+    def iniciar(self):
+        "Inicia la aplicación"
+        self.root.mainloop()
+
+
+if __name__ == "__main__":
+    gui = VehiculosGUI()
+    gui.iniciar()
